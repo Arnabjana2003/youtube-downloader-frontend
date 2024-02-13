@@ -2,6 +2,12 @@ import React, { useRef, useState } from "react";
 import axios from "axios";
 import "./App.css";
 
+
+const instance = axios.create({
+  baseURL: '/api', // Assuming your API endpoints start with "/api"
+});
+
+
 const VideoDownloader = () => {
   const inputRef = useRef();
   const [videoUrl, setVideoUrl] = useState("");
@@ -16,7 +22,7 @@ const VideoDownloader = () => {
     e.target.disabled = true;
     inputRef.current.readOnly = true;
     try {
-      const res = await axios.post("/api/getdetails", { videoUrl });
+      const res = await instance.post("/api/getdetails", { videoUrl });
       e.target.disabled = false;
       inputRef.current.readOnly = false
       setAudioLink(res.data.audioUrl);
