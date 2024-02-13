@@ -5,8 +5,8 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   server: {
     proxy:{
-      // "/api": "https://youtube-downloader-pink.vercel.app"
-      "/api": "http://localhost:5000"
+      "/api": "https://youtube-downloader-pink.vercel.app"
+      // "/api": "http://localhost:5000"
     }
   },
   plugins: [react()],
