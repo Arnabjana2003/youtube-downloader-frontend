@@ -3,10 +3,6 @@ import axios from "axios";
 import "./App.css";
 
 
-const instance = axios.create({
-  baseURL: '/api', // Assuming your API endpoints start with "/api"
-});
-
 
 const VideoDownloader = () => {
   const inputRef = useRef();
@@ -22,7 +18,7 @@ const VideoDownloader = () => {
     e.target.disabled = true;
     inputRef.current.readOnly = true;
     try {
-      const res = await instance.post("/api/getdetails", { videoUrl });
+      const res = await axios.post("https://youtube-downloader-pink.vercel.app/api/getdetails", { videoUrl });
       e.target.disabled = false;
       inputRef.current.readOnly = false
       setAudioLink(res.data.audioUrl);
